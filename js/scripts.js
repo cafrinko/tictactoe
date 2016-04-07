@@ -38,16 +38,13 @@ $(document).ready(function() {
   $("#gameBoard td").one("click", function(event) {
     var spaceId = $(this).attr('id'); //using the table ID and each table cell ID to allow for click functions//
     newGame.currentPlayer.spaces.push(spaceId); //pushes the table cell value of clicked cell to current players array//
-    $("#" + spaceId).text(playerOne.mark); //prints out X or O to game board//
-    console.log(playerOne.mark);
-    console.log(newGame.currentPlayer);
-    // console.log(newGame.currentPlayer.spaces);
-    // console.log(spaceId);
-    newGame.switchPlayer(); //switches player to alternate turns//
-    // newGame.currentPlayer.spaces.push(spaceId);
-    // $("#" + spaceId).text(playerTwo.mark);
-    // console.log(playerTwo.mark);
 
+    if (newGame.currentPlayer === playerOne) {
+      $("#" + spaceId).text(playerOne.mark); //prints out X or O to game board//
+    } else if (newGame.currentPlayer === playerTwo) {
+      $("#" + spaceId).text(playerTwo.mark);
+    }
+    newGame.switchPlayer(); //switches player to alternate turns//
   });
 
   $("form.chooseXO").submit(function(event) {
@@ -55,6 +52,6 @@ $(document).ready(function() {
   });
  });
 
-//Mark the table with X or O
+
 //Determine if there is a win
 //Incorporate computer play
