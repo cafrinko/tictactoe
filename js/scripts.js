@@ -41,14 +41,14 @@ Game.prototype.win = function () {
 
 
 // function Board (number) { //unsure if this is needed or not???//
-//   var number = 2;
-//   var board = [];
-//   for (var x = 0; x <= number; x++);
-//     board.push([], [], []);
+//
+//   //cycle through rows
+//   for (var x = 0; x <= row.length; x++);
+//   spaces[x].join();
+//   //cycle through columns
+//   for (var x = 0; x <= row.length; x++);
 //     for (var y = 0; y <= number; y++);
-//       board.push([], [], []);
-//   return board;
-//   console.log(board);
+//     spaces[y].join();
 // }
 
 //user interface logic//
