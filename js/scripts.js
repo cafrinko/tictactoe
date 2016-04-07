@@ -19,11 +19,23 @@ Game.prototype.switchPlayer = function () { //uses the if else function to switc
 }
 
 Game.prototype.win = function () {
-  var win = ["square00", "square01", "square02"];
-  if (this.currentPlayer.spaces.contains[0,1,2] === win) {
-    alert("Yeah, you won!")
-  } else {
-    alert("You haven't won yet!")
+  var winningArrays = [["1","2","3"],["4","5","6"],["7","8","9"],["1","4","7"],["2","5","8"],["3","6","9"],["1","5","9"],["3","5","7"]];
+
+
+
+  for (var row = 0; row < winningArrays.length; row++) {
+    var winningArrays2 = winningArrays.toString();
+    // console.log("start " + this.currentPlayer.spaces);
+    console.log(winningArrays2[row]);
+    console.log(this.currentPlayer);
+    console.log(this.currentPlayer.spaces);
+
+    if (this.currentPlayer.spaces.toString === winningArrays.toString()) {
+      // console.log(this.currentPlayer.spaces);
+      // console.log(this.playerOne.spaces);
+      // console.log(this.playerTwo.spaces);
+      alert("hi");
+    }
   }
 }
 
@@ -50,14 +62,14 @@ $(document).ready(function() {
   $("#gameBoard td").one("click", function(event) {
     var spaceId = $(this).attr('id'); //using the table ID and each table cell ID to allow for click functions//
     newGame.currentPlayer.spaces.push(spaceId); //pushes the table cell value of clicked cell to current players array//
-
+    newGame.win();
     if (newGame.currentPlayer === playerOne) {
       $("#" + spaceId).text(playerOne.mark); //prints out X or O to game board//
     } else {
       $("#" + spaceId).text(playerTwo.mark);
     }
     newGame.switchPlayer(); //switches player to alternate turns//
-    newGame.win();
+
 
 
     // if (playerOne.mark)
@@ -70,4 +82,5 @@ $(document).ready(function() {
 
 
 //Determine if there is a win
+  //Remember to check for wins after each mark in either business or user interface
 //Incorporate computer play
