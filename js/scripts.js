@@ -26,11 +26,11 @@ Game.prototype.win = function () {
   for (var row = 0; row < winningArrays.length; row++) {
     var winningArrays2 = winningArrays.toString();
     // console.log("start " + this.currentPlayer.spaces);
-    console.log(winningArrays2[row]);
-    console.log(this.currentPlayer);
-    console.log(this.currentPlayer.spaces);
+    console.log(winningArrays2);
+    // console.log(this.currentPlayer);
+    console.log(this.currentPlayer.spaces.toString());
 
-    if (this.currentPlayer.spaces.toString === winningArrays.toString()) {
+    if (this.currentPlayer.spaces.toString() === winningArrays.toString()) {
       // console.log(this.currentPlayer.spaces);
       // console.log(this.playerOne.spaces);
       // console.log(this.playerTwo.spaces);
@@ -40,16 +40,16 @@ Game.prototype.win = function () {
 }
 
 
-function Board (number) { //unsure if this is needed or not???//
-  var number = 2;
-  var board = [];
-  for (var x = 0; x <= number; x++);
-    board.push([], [], []);
-    for (var y = 0; y <= number; y++);
-      board.push([], [], []);
-  return board;
-  console.log(board);
-}
+// function Board (number) { //unsure if this is needed or not???//
+//   var number = 2;
+//   var board = [];
+//   for (var x = 0; x <= number; x++);
+//     board.push([], [], []);
+//     for (var y = 0; y <= number; y++);
+//       board.push([], [], []);
+//   return board;
+//   console.log(board);
+// }
 
 //user interface logic//
 $(document).ready(function() {
