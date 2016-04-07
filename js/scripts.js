@@ -1,16 +1,16 @@
 //business logic//
-function Player (mark) {
+function Player (mark) { //takes new instances that were defined as variables in user interface logic//
   this.mark = mark;
-  this.spaces = [];
+  this.spaces = []; //empty array that is populated as players select a square//
 }
 
-function Game(playerOne, playerTwo) {
+function Game(playerOne, playerTwo) { //need to create constructor with playerOne and playerTwo to make Game.prototype.switchPlayer work without needing global variables//
   this.playerOne = playerOne;
   this.playerTwo = playerTwo;
-  this.currentPlayer = playerOne;
+  this.currentPlayer = playerOne; //starts each game with playerOne starting and is used to switch players on alternating turns//
 }
 
-Game.prototype.switchPlayer = function () {
+Game.prototype.switchPlayer = function () { //uses the if else function to switch players//
   if (this.currentPlayer === this.playerOne) {
     this.currentPlayer = this.playerTwo;
   } else {
@@ -27,7 +27,7 @@ Game.prototype.switchPlayer = function () {
 //   letter = "x";
 // }
 
-function Board (number) {
+function Board (number) { //unsure if this is needed or not???//
   var board = [];
   for (var x = 0; x <= number; x++);
     board.push([]);
@@ -39,33 +39,20 @@ function Board (number) {
 
 //user interface logic//
 $(document).ready(function() {
-  var playerOne = new Player("X"); //instantiate new instance of Player object
+  var playerOne = new Player("X"); //instantiate a new instance of the Player object
   var playerTwo = new Player("O");
 
-  var newGame = new Game(playerOne, playerTwo);
+  var newGame = new Game(playerOne, playerTwo); //instantiate a new instance of the Game object
 
   $("#gameBoard td").click(function(event) {
-    var spaceId = $(this).attr('id');
-    newGame.currentPlayer.spaces.push(spaceId);
+    var spaceId = $(this).attr('id'); //using the table ID and each table cell ID to allow for click functions//
+    newGame.currentPlayer.spaces.push(spaceId); //pushes the table cell value of clicked cell to current players array//
     console.log(newGame.currentPlayer);
     console.log(newGame.currentPlayer.spaces);
-    newGame.switchPlayer();
+    newGame.switchPlayer(); //switches player to alternate turns//
   });
 
   $("form.chooseXO").submit(function(event) {
     event.preventDefault();
   });
  });
-
-
-//Ideas - Use if, if else statements to determine if game is won?
-// 1- a player uses the select box to choose whether to be an X or O
-// 2- hide select box once option is selected and display "You are X's (or O's)"
-// 3- randomly let the computer start the game???
-// 4- click on what box you want to mark and that displays your mark
-// 5- keep track of what cells are marked, not allowing them to be re-marked
-// 6- use for loop or arrays to calculate value of X or Y coordinates to sum value, with each X and Y value being its coordinate value
-// 6b- win cells X values down a column = 3
-// 6c- win cells Y values across a row = 3
-// 6d- win if diagonal X or Y values = 3
-//
