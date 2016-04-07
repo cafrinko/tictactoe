@@ -18,24 +18,15 @@ Game.prototype.switchPlayer = function () { //uses the if else function to switc
   }
 }
 
-// switch player logic//
-// var letter = "x";
+// function Board (number) { //unsure if this is needed or not???//
+//   var board = [];
+//   for (var x = 0; x <= number; x++);
+//     board.push([]);
+//     for (var y = 0; y <= number; y++);
+//       board.push([]);
 //
-// if (letter === "x") {
-//   letter = "y";
-// } else {
-//   letter = "x";
+//       return board;
 // }
-
-function Board (number) { //unsure if this is needed or not???//
-  var board = [];
-  for (var x = 0; x <= number; x++);
-    board.push([]);
-    for (var y = 0; y <= number; y++);
-      board.push([]);
-
-      return board;
-}
 
 //user interface logic//
 $(document).ready(function() {
@@ -44,15 +35,26 @@ $(document).ready(function() {
 
   var newGame = new Game(playerOne, playerTwo); //instantiate a new instance of the Game object
 
-  $("#gameBoard td").click(function(event) {
+  $("#gameBoard td").one("click", function(event) {
     var spaceId = $(this).attr('id'); //using the table ID and each table cell ID to allow for click functions//
     newGame.currentPlayer.spaces.push(spaceId); //pushes the table cell value of clicked cell to current players array//
+    $("#" + spaceId).text(playerOne.mark); //prints out X or O to game board//
+    console.log(playerOne.mark);
     console.log(newGame.currentPlayer);
-    console.log(newGame.currentPlayer.spaces);
+    // console.log(newGame.currentPlayer.spaces);
+    // console.log(spaceId);
     newGame.switchPlayer(); //switches player to alternate turns//
+    // newGame.currentPlayer.spaces.push(spaceId);
+    // $("#" + spaceId).text(playerTwo.mark);
+    // console.log(playerTwo.mark);
+
   });
 
   $("form.chooseXO").submit(function(event) {
     event.preventDefault();
   });
  });
+
+//Mark the table with X or O
+//Determine if there is a win
+//Incorporate computer play
